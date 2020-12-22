@@ -68,6 +68,9 @@ const moveOn = () => {
 
 button.addEventListener("click", () => {
     newQuiz.isActive = true;
+    responseHeading.textContent = `Test your tech knowledge.`
+    responseHeading.classList.remove("correct")
+    responseHeading.classList.remove("incorrect")
     moveOn();
     button.classList.add("hidden");
 });
