@@ -13,7 +13,7 @@ const prepareNextQuestion = () => {
         question = newQuiz.getNextQuestion();
     } catch {
         newQuiz.isActive = false
-        return questionText.textContent = `Quiz over! You got ${newQuiz.score}/${newQuiz.questions.length} questions.`
+        return questionText.textContent = `Quiz over! You got ${newQuiz.score} out of ${newQuiz.questions.length} questions correct.`
     }
     question.shuffleAnswers();
     questionText.textContent = question.question;
