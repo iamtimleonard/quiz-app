@@ -1,16 +1,36 @@
+body {
+    background-color: #343434;
+    text-align: center;
+}
+
+ul {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+}
+
 .hidden {
     display: none;
 }
 
 .container {
-    width: 75%;
+    width: 66%;
     margin: 4rem auto;
+    background-color: aliceblue;
+    padding: 1rem;
+    border-radius: 10px;
 }
 
 .answer {
     list-style-type: decimal;
+    list-style-position: inside;
+    width: 66%;
+    margin: .5rem 0;
+    cursor: pointer;
 }
 
 .answer:hover {
-    color: #343434;
+    background-color: #343434;
+    color: #ababab;
 }
