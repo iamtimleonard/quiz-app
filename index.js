@@ -3,6 +3,7 @@ const questionText = document.querySelector(".question");
 const answerList = document.querySelector(".answers");
 const scoreHeading = document.querySelector(".score-heading");
 const button = document.querySelector("button");
+const responseHeading = document.querySelector(".response")
 
 const prepareNextQuestion = () => {
     document.querySelectorAll(".answer").forEach(function (answer) {
@@ -12,7 +13,7 @@ const prepareNextQuestion = () => {
         question = newQuiz.getNextQuestion();
     } catch {
         newQuiz.isActive = false
-        return questionText.textContent = "Quiz over!"
+        return questionText.textContent = `Quiz over! You got ${newQuiz.score}/${newQuiz.questions.length} questions.`
     }
     question.shuffleAnswers();
     questionText.textContent = question.question;
@@ -34,6 +35,19 @@ const reset = () => {
     newQuiz.score = 0;
 }
 
+const deliverResult = (userAnswer) => {
+    newQuiz.handleResult(question.isCorrect(userAnswer));
+    if (question.isCorrect(userAnswer)) {
+        responseHeading.textContent = `Correct! The answer was ${question.correctAnswer}`
+        responseHeading.classList.add("correct");
+        responseHeading.classList.remove("incorrect");
+    } else {
+        responseHeading.textContent = `Incorrect! The answer was ${question.correctAnswer}`
+        responseHeading.classList.add("incorrect");
+        responseHeading.classList.remove("correct");
+    }
+}
+
 const moveOn = () => {
     prepareNextQuestion();
     scoreHeading.textContent = `Your score: ${newQuiz.score}`
@@ -46,7 +60,7 @@ const moveOn = () => {
         item = constructAnswer(answer);
         item.addEventListener("click", (e) => {
             userAnswer = e.target.id;
-            newQuiz.handleResult(question.isCorrect(userAnswer))
+            deliverResult(userAnswer);
             moveOn();
         });
     }
