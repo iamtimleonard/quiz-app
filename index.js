@@ -164,20 +164,32 @@ class Question {
 }
 
 const newQuiz = new Quiz(questionData);
-const questionText = document.querySelector(".question")
-const answerList = document.querySelector(".answers")
+const questionText = document.querySelector(".question");
+const answerList = document.querySelector(".answers");
+const scoreHeading = document.querySelector(".score-heading");
 
-const moveOn = () => {
+const prepareNextQuestion = () => {
     document.querySelectorAll(".answer").forEach(function (item) {
         item.remove();
     });
     question = newQuiz.getNextQuestion();
     question.shuffleAnswers();
     questionText.textContent = question.question;
+}
+
+const moveOn = () => {
+    prepareNextQuestion();
+    let userAnswer = '';
     for (const answer of question.allAnswers) {
         item = document.createElement('li');
         item.textContent = answer;
-        item.classList.add("answer")
+        item.classList.add("answer");
+        item.setAttribute("id", answer);
         answerList.appendChild(item);
+        item.addEventListener("click", (e) => {
+            userAnswer = e.target.id;
+            newQuiz.handleResult(question.isCorrect(userAnswer))
+        });
     }
+    scoreHeading.textContent = `Your score: ${newQuiz.score}`
 }
