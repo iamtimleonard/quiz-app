@@ -10,12 +10,14 @@ const categoryChoices = document.querySelectorAll(".category")
 
 const initialize = (data) => quiz = new Quiz(data);
 
-initialize(questionData);
-
-const prepareNextQuestion = () => {
+const removeAnswers = () => {
     document.querySelectorAll(".answer").forEach(function (answer) {
         answer.remove();
     });
+}
+
+const prepareNextQuestion = () => {
+    removeAnswers();
     try {
         question = quiz.getNextQuestion();
     } catch {
@@ -37,7 +39,6 @@ const constructAnswer = (answer) => {
 
 const reset = () => {
     button.classList.remove("hidden");
-    button.textContent = "Try again";
     quiz.currentQuestion = 0;
     quiz.score = 0;
 }
@@ -60,6 +61,7 @@ const moveOn = () => {
     scoreHeading.textContent = `Your score: ${quiz.score}`
     if (!quiz.isActive) {
         reset();
+        button.textContent = "Retake quiz";
         return;
     }
     let userAnswer = '';
@@ -75,7 +77,7 @@ const moveOn = () => {
 
 button.addEventListener("click", () => {
     quiz.isActive = true;
-    responseHeading.textContent = `Test your tech knowledge.`
+    responseHeading.textContent = `Test your knowledge.`
     responseHeading.classList.remove("correct")
     responseHeading.classList.remove("incorrect")
     moveOn();
@@ -87,8 +89,11 @@ categoryChoices.forEach((category) => {
         const {
             data
         } = await axios.get(`https://opentdb.com/api.php?amount=10&category=${e.target.id}&difficulty=easy&type=multiple&encode=base64`);
-        console.log(data)
+        console.log(data);
+        questionText.textContent = '';
         initialize(data);
+        removeAnswers();
         reset();
+        button.textContent = "Start new quiz";
     });
 });
