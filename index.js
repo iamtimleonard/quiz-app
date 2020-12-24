@@ -1,27 +1,34 @@
-const newQuiz = new Quiz(questionData);
+//url: https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple
+
+let quiz;
 const questionText = document.querySelector(".question");
 const answerList = document.querySelector(".answers");
 const scoreHeading = document.querySelector(".score-heading");
 const button = document.querySelector("button");
-const responseHeading = document.querySelector(".response")
+const responseHeading = document.querySelector(".response");
+const categoryChoices = document.querySelectorAll(".category")
+
+const initialize = (data) => quiz = new Quiz(data);
+
+initialize(questionData);
 
 const prepareNextQuestion = () => {
     document.querySelectorAll(".answer").forEach(function (answer) {
         answer.remove();
     });
     try {
-        question = newQuiz.getNextQuestion();
+        question = quiz.getNextQuestion();
     } catch {
-        newQuiz.isActive = false
-        return questionText.textContent = `Quiz over! You got ${newQuiz.score} out of ${newQuiz.questions.length} questions correct.`
+        quiz.isActive = false
+        return questionText.textContent = `Quiz over! You got ${quiz.score} out of ${quiz.questions.length} questions correct.`
     }
     question.shuffleAnswers();
-    questionText.textContent = question.question;
+    questionText.textContent = atob(question.question);
 }
 
 const constructAnswer = (answer) => {
     item = document.createElement('li');
-    item.textContent = answer;
+    item.textContent = atob(answer);
     item.classList.add("answer");
     item.setAttribute("id", answer);
     answerList.appendChild(item);
@@ -31,18 +38,18 @@ const constructAnswer = (answer) => {
 const reset = () => {
     button.classList.remove("hidden");
     button.textContent = "Try again";
-    newQuiz.currentQuestion = 0;
-    newQuiz.score = 0;
+    quiz.currentQuestion = 0;
+    quiz.score = 0;
 }
 
 const deliverResult = (userAnswer) => {
-    newQuiz.handleResult(question.isCorrect(userAnswer));
+    quiz.handleResult(question.isCorrect(userAnswer));
     if (question.isCorrect(userAnswer)) {
-        responseHeading.textContent = `Correct! The answer was ${question.correctAnswer}`
+        responseHeading.textContent = `Correct! The answer was: ${atob(question.correctAnswer)}`
         responseHeading.classList.add("correct");
         responseHeading.classList.remove("incorrect");
     } else {
-        responseHeading.textContent = `Incorrect! The answer was ${question.correctAnswer}`
+        responseHeading.textContent = `Incorrect! The answer was: ${atob(question.correctAnswer)}`
         responseHeading.classList.add("incorrect");
         responseHeading.classList.remove("correct");
     }
@@ -50,8 +57,8 @@ const deliverResult = (userAnswer) => {
 
 const moveOn = () => {
     prepareNextQuestion();
-    scoreHeading.textContent = `Your score: ${newQuiz.score}`
-    if (!newQuiz.isActive) {
+    scoreHeading.textContent = `Your score: ${quiz.score}`
+    if (!quiz.isActive) {
         reset();
         return;
     }
@@ -59,7 +66,7 @@ const moveOn = () => {
     for (const answer of question.allAnswers) {
         item = constructAnswer(answer);
         item.addEventListener("click", (e) => {
-            userAnswer = e.target.id;
+            userAnswer = (e.target.id);
             deliverResult(userAnswer);
             moveOn();
         });
@@ -67,10 +74,21 @@ const moveOn = () => {
 }
 
 button.addEventListener("click", () => {
-    newQuiz.isActive = true;
+    quiz.isActive = true;
     responseHeading.textContent = `Test your tech knowledge.`
     responseHeading.classList.remove("correct")
     responseHeading.classList.remove("incorrect")
     moveOn();
     button.classList.add("hidden");
+});
+
+categoryChoices.forEach((category) => {
+    category.addEventListener("click", async (e) => {
+        const {
+            data
+        } = await axios.get(`https://opentdb.com/api.php?amount=10&category=${e.target.id}&difficulty=easy&type=multiple&encode=base64`);
+        console.log(data)
+        initialize(data);
+        reset();
+    });
 });

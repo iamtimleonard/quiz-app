@@ -13,7 +13,31 @@ button {
     cursor: pointer;
 }
 
-ul {
+nav {
+    display: flex;
+}
+
+.categories-tab {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    cursor: pointer;
+}
+
+.category {
+    display: none;
+}
+
+.category:hover {
+    color: #086abb;
+    cursor: pointer;
+}
+
+.categories-tab:hover .category {
+    display: inherit;
+}
+
+.answers {
     width: 100%;
     display: grid;
     grid-template-rows: 1fr 1fr;
