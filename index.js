@@ -6,14 +6,22 @@ const answerList = document.querySelector(".answers");
 const scoreHeading = document.querySelector(".score-heading");
 const button = document.querySelector("button");
 const responseHeading = document.querySelector(".response");
-const categoryChoices = document.querySelectorAll(".category")
+const categoryChoices = document.querySelectorAll(".category");
+const difficultyChoices = document.querySelectorAll(".difficulty")
+const userChoices = {
+    category: '9',
+    difficulty: 'easy'
+}
 
 const initialize = (data) => quiz = new Quiz(data);
 
-const removeAnswers = () => {
-    document.querySelectorAll(".answer").forEach(function (answer) {
-        answer.remove();
-    });
+const constructAnswer = (answer) => {
+    item = document.createElement('li');
+    item.textContent = atob(answer);
+    item.classList.add("answer");
+    item.setAttribute("id", answer);
+    answerList.appendChild(item);
+    return item;
 }
 
 const prepareNextQuestion = () => {
@@ -28,16 +36,15 @@ const prepareNextQuestion = () => {
     questionText.textContent = atob(question.question);
 }
 
-const constructAnswer = (answer) => {
-    item = document.createElement('li');
-    item.textContent = atob(answer);
-    item.classList.add("answer");
-    item.setAttribute("id", answer);
-    answerList.appendChild(item);
-    return item;
+const removeAnswers = () => {
+    document.querySelectorAll(".answer").forEach(function (answer) {
+        answer.remove();
+    });
 }
 
 const reset = () => {
+    removeAnswers();
+    questionText.textContent = '';
     button.classList.remove("hidden");
     quiz.currentQuestion = 0;
     quiz.score = 0;
@@ -86,14 +93,26 @@ button.addEventListener("click", () => {
 
 categoryChoices.forEach((category) => {
     category.addEventListener("click", async (e) => {
+        userChoices.category = e.target.id
         const {
             data
-        } = await axios.get(`https://opentdb.com/api.php?amount=10&category=${e.target.id}&difficulty=easy&type=multiple&encode=base64`);
+        } = await axios.get(`https://opentdb.com/api.php?amount=10&category=${userChoices.category}&difficulty=${userChoices.difficulty}&type=multiple&encode=base64`);
         console.log(data);
-        questionText.textContent = '';
         initialize(data);
-        removeAnswers();
         reset();
         button.textContent = "Start new quiz";
     });
 });
+
+difficultyChoices.forEach((difficulty) => {
+    difficulty.addEventListener("click", async (e) => {
+        userChoices.difficulty = e.target.id
+        const {
+            data
+        } = await axios.get(`https://opentdb.com/api.php?amount=10&category=${userChoices.category}&difficulty=${userChoices.difficulty}&type=multiple&encode=base64`);
+        console.log(data);
+        initialize(data);
+        reset();
+        button.textContent = "Start new quiz";
+    })
+})
