@@ -17,37 +17,33 @@ button {
 
 nav {
     display: flex;
+    justify-content: space-between;
     background-color: aliceblue;
     color: #343434;
 }
 
-.categories {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    justify-self: flex-start;
-    font-weight: normal;
+.nav-title {
+    margin: 1rem;
+    font-weight: 700;
 }
 
-.category,
-.difficulty {
-    display: none;
+.categories, .difficulties {
+    display: flex;
+    flex-direction: column;
 }
 
 .nav-item {
-    margin: 1rem 2rem;
-    font-weight: bold;
-}
-
-.category:hover,
-.difficulty:hover {
-    color: #086abb;
+    font-weight: 400;
     cursor: pointer;
+    margin: .2rem;
 }
 
-.categories:hover .category,
-.difficulties:hover .difficulty {
-    display: block;
+.nav-item:hover {
+    font-weight: 700;
+}
+
+.chosen {
+    font-weight: 700;
 }
 
 .answers {
@@ -96,17 +92,20 @@ button:hover {
     background-color: #055597;
 }
 
-.answer:hover {
-    background-color: #343434;
-    color: #ababab;
-}
-
-@media(max-width: 700px) {
-    nav {
-        justify-content: center;
+@media(min-width: 700px){
+    .answer:hover {
+        background-color: #343434;
+        color: #ababab;
     }
-
-    .category {
-        display: inherit;
+    nav{
+        flex-direction: column;
+        justify-content: start;
+        align-items: flex-start;
+    }
+    .categories, .difficulties{
+        flex-direction: row;
+    }
+    .nav-item{
+        margin: 0 1rem;
     }
 }

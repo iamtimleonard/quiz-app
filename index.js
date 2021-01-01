@@ -91,14 +91,22 @@ button.addEventListener("click", () => {
     button.classList.add("hidden");
 });
 
+const setMenu = () => {
+    document.querySelectorAll(".chosen").forEach((choice)=>{
+        choice.classList.remove("chosen")
+    });
+    document.getElementById(userChoices.category).classList.add("chosen");
+    document.getElementById(userChoices.difficulty).classList.add("chosen");
+}
+
 categoryChoices.forEach((category) => {
     category.addEventListener("click", async (e) => {
         userChoices.category = e.target.id
         const {
             data
         } = await axios.get(`https://opentdb.com/api.php?amount=10&category=${userChoices.category}&difficulty=${userChoices.difficulty}&type=multiple&encode=base64`);
-        console.log(data);
         initialize(data);
+        setMenu();
         reset();
         button.textContent = "Start new quiz";
     });
@@ -110,8 +118,8 @@ difficultyChoices.forEach((difficulty) => {
         const {
             data
         } = await axios.get(`https://opentdb.com/api.php?amount=10&category=${userChoices.category}&difficulty=${userChoices.difficulty}&type=multiple&encode=base64`);
-        console.log(data);
         initialize(data);
+        setMenu();
         reset();
         button.textContent = "Start new quiz";
     })
