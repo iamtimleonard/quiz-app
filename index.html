@@ -14,24 +14,24 @@
   </head>
 
   <body>
-    <nav>
-      <div class="title nav-title">Trivia Game</div>
-      <div class="categories nav-title">
-        Categories
+    <header>
+      <h1 class="title nav-title">Trivia Game</h1>
+      <nav class="menu">
+        <h2 class="categories nav-title">Categories</h2>
         <ul class="menu__categories"></ul>
-      </div>
-      <div class="difficulties nav-title">
-        Difficulty
+        <h2 class="difficulties nav-title">Difficulty</h2>
         <ul class="menu__difficulty"></ul>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <h1 class="score-heading">Your score: 0</h1>
+        <h4 class="response">Please choose a category above.</h4>
+        <h3 class="question"></h3>
+        <ul class="answers"></ul>
+        <button class="hidden">Start Quiz</button>
       </div>
-    </nav>
-    <div class="container">
-      <h1 class="score-heading">Your score: 0</h1>
-      <h4 class="response">Please choose a category above.</h4>
-      <h3 class="question"></h3>
-      <ul class="answers"></ul>
-      <button class="hidden">Start Quiz</button>
-    </div>
+    </main>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
       integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
