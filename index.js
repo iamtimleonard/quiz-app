@@ -1,17 +1,38 @@
 //url: https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple
-
 let quiz;
+const categoriesMenu = document.querySelector(".menu__categories");
+const difficultyMenu = document.querySelector(".menu__difficulty");
 const questionText = document.querySelector(".question");
 const answerList = document.querySelector(".answers");
 const scoreHeading = document.querySelector(".score-heading");
 const button = document.querySelector("button");
 const responseHeading = document.querySelector(".response");
-const categoryChoices = document.querySelectorAll(".category");
-const difficultyChoices = document.querySelectorAll(".difficulty");
+let categoryChoices;
+let difficultyChoices;
 const userChoices = {
   category: "9",
   difficulty: "easy",
 };
+
+categories.forEach((category) => {
+  const item = document.createElement("li");
+  item.textContent = category.title;
+  item.id = category.id;
+  item.classList.add("category");
+  item.classList.add("nav-item");
+  categoriesMenu.appendChild(item);
+  categoryChoices = document.querySelectorAll(".category");
+});
+
+difficulty.forEach((difficulty) => {
+  const item = document.createElement("li");
+  item.textContent = difficulty;
+  item.id = difficulty;
+  item.classList.add("difficulty");
+  item.classList.add("nav-item");
+  difficultyMenu.appendChild(item);
+  difficultyChoices = document.querySelectorAll(".difficulty");
+});
 
 const initialize = (data) => (quiz = new Quiz(data));
 
