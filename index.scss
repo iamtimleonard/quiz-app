@@ -14,9 +14,9 @@ body {
 
 .header {
   display: flex;
-}
-.header__toggle {
-  margin-left: auto;
+  &__toggle {
+    margin-left: auto;
+  }
 }
 
 .menu {
@@ -24,24 +24,24 @@ body {
   justify-content: space-around;
   background-color: aliceblue;
   color: #343434;
-}
-.menu__heading {
-  text-align: left;
-}
-.menu__items {
-  list-style: none;
-  text-align: left;
-}
-.menu__item {
-  font-weight: 400;
-  cursor: pointer;
-  margin: 0.2rem;
-}
-.menu__item:hover {
-  font-weight: 700;
-}
-.menu--chosen {
-  font-weight: 700;
+  &__heading {
+    text-align: left;
+  }
+  &__items {
+    list-style: none;
+    text-align: left;
+  }
+  &__item {
+    font-weight: 400;
+    cursor: pointer;
+    margin: 0.2rem;
+    &:hover {
+      font-weight: 700;
+    }
+  }
+  &--chosen {
+    font-weight: 700;
+  }
 }
 
 .answers {
@@ -105,21 +105,16 @@ button:hover {
     background-color: #343434;
     color: #ababab;
   }
-
   nav {
     flex-direction: column;
     justify-content: start;
     align-items: flex-start;
   }
-
   .categories,
-.difficulties {
+  .difficulties {
     flex-direction: row;
   }
-
   .nav-item {
     margin: 0 1rem;
   }
 }
-
-/*# sourceMappingURL=index.css.map */

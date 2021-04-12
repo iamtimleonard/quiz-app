@@ -1,11 +1,11 @@
 //url: https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple
 let quiz;
-const categoriesMenu = document.querySelector(".menu__categories");
-const difficultyMenu = document.querySelector(".menu__difficulty");
+const categoriesMenu = document.querySelector(".categories");
+const difficultyMenu = document.querySelector(".difficulty");
 const questionText = document.querySelector(".question");
 const answerList = document.querySelector(".answers");
 const scoreHeading = document.querySelector(".score-heading");
-const button = document.querySelector("button");
+const quizButton = document.querySelector(".quiz__button");
 const responseHeading = document.querySelector(".response");
 let categoryChoices;
 let difficultyChoices;
@@ -19,7 +19,7 @@ categories.forEach((category) => {
   item.textContent = category.title;
   item.id = category.id;
   item.classList.add("category");
-  item.classList.add("nav-item");
+  item.classList.add("menu__item");
   categoriesMenu.appendChild(item);
   categoryChoices = document.querySelectorAll(".category");
 });
@@ -29,7 +29,7 @@ difficulty.forEach((difficulty) => {
   item.textContent = difficulty;
   item.id = difficulty;
   item.classList.add("difficulty");
-  item.classList.add("nav-item");
+  item.classList.add("menu__item");
   difficultyMenu.appendChild(item);
   difficultyChoices = document.querySelectorAll(".difficulty");
 });
@@ -66,7 +66,7 @@ const removeAnswers = () => {
 const reset = () => {
   removeAnswers();
   questionText.textContent = "";
-  button.classList.remove("hidden");
+  quizButton.classList.remove("hidden");
   quiz.currentQuestion = 0;
   quiz.score = 0;
 };
@@ -93,7 +93,7 @@ const moveOn = () => {
   scoreHeading.textContent = `Your score: ${quiz.score}`;
   if (!quiz.isActive) {
     reset();
-    button.textContent = "Retake quiz";
+    quizButton.textContent = "Retake quiz";
     return;
   }
   let userAnswer = "";
@@ -107,21 +107,21 @@ const moveOn = () => {
   }
 };
 
-button.addEventListener("click", () => {
+quizButton.addEventListener("click", () => {
   quiz.isActive = true;
   responseHeading.textContent = `Test your knowledge.`;
   responseHeading.classList.remove("correct");
   responseHeading.classList.remove("incorrect");
   moveOn();
-  button.classList.add("hidden");
+  quizButton.classList.add("hidden");
 });
 
 const setMenu = () => {
-  document.querySelectorAll(".chosen").forEach((choice) => {
-    choice.classList.remove("chosen");
+  document.querySelectorAll(".menu--chosen").forEach((choice) => {
+    choice.classList.remove("menu--chosen");
   });
-  document.getElementById(userChoices.category).classList.add("chosen");
-  document.getElementById(userChoices.difficulty).classList.add("chosen");
+  document.getElementById(userChoices.category).classList.add("menu--chosen");
+  document.getElementById(userChoices.difficulty).classList.add("menu--chosen");
 };
 
 categoryChoices.forEach((category) => {
@@ -133,7 +133,7 @@ categoryChoices.forEach((category) => {
     initialize(data);
     setMenu();
     reset();
-    button.textContent = "Start new quiz";
+    quizButton.textContent = "Start new quiz";
   });
 });
 
@@ -146,6 +146,6 @@ difficultyChoices.forEach((difficulty) => {
     initialize(data);
     setMenu();
     reset();
-    button.textContent = "Start new quiz";
+    quizButton.textContent = "Start new quiz";
   });
 });
