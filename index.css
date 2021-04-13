@@ -40,6 +40,7 @@ body {
 }
 .header__toggle {
   margin-left: auto;
+  cursor: pointer;
 }
 
 .menu {
@@ -131,10 +132,6 @@ body {
 
 .incorrect {
   color: #bb0000;
-}
-
-button:hover {
-  background-color: #055597;
 }
 
 @media (min-width: 700px) {

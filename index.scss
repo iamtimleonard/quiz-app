@@ -39,6 +39,7 @@ body {
   padding: 2rem;
   &__toggle {
     margin-left: auto;
+    cursor: pointer;
   }
 }
 
@@ -131,10 +132,6 @@ body {
 
 .incorrect {
   color: #bb0000;
-}
-
-button:hover {
-  background-color: #055597;
 }
 
 @media (min-width: 700px) {
