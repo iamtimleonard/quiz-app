@@ -1,3 +1,7 @@
+$main-grey: #343434;
+$main-grey-light: #ababab;
+$main-blue: aliceblue;
+
 * {
   margin: 0;
   padding: 0;
@@ -28,7 +32,6 @@ li {
 }
 
 body {
-  background-color: #343434;
   text-align: center;
   font-family: "Roboto Condensed", sans-serif;
   font-weight: normal;
@@ -37,16 +40,24 @@ body {
 .header {
   display: flex;
   padding: 2rem;
+  background: $main-grey-light;
+  box-shadow: 0 0 1rem 1rem $main-grey-light;
+  &__title {
+    color: white;
+  }
   &__toggle {
     margin-left: auto;
     cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
   }
 }
 
 .menu {
   display: flex;
   justify-content: space-around;
-  background-color: aliceblue;
+  background-color: $main-blue;
   height: 0;
   padding: 0;
   border-radius: 15px;
@@ -96,7 +107,7 @@ body {
 .quiz__button {
   border: none;
   background-color: #086abb;
-  color: aliceblue;
+  color: $main-blue;
   padding: 1rem;
   border-radius: 5px;
   cursor: pointer;
@@ -110,7 +121,7 @@ body {
   width: 90%;
   max-width: 100rem;
   margin: 8rem auto;
-  background-color: aliceblue;
+  background-color: $main-blue;
   padding: 3rem;
   border-radius: 10px;
 }
@@ -123,7 +134,7 @@ body {
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 10px;
-  border: 1px solid #343434;
+  border: 1px solid $main-grey;
 }
 
 .correct {
@@ -153,7 +164,7 @@ body {
     }
   }
   .answer:hover {
-    background-color: #343434;
+    background-color: $main-grey;
     color: #ababab;
   }
 }

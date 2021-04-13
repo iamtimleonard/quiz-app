@@ -28,7 +28,6 @@ li {
 }
 
 body {
-  background-color: #343434;
   text-align: center;
   font-family: "Roboto Condensed", sans-serif;
   font-weight: normal;
@@ -37,10 +36,18 @@ body {
 .header {
   display: flex;
   padding: 2rem;
+  background: #ababab;
+  box-shadow: 0 0 1rem 1rem #ababab;
+}
+.header__title {
+  color: white;
 }
 .header__toggle {
   margin-left: auto;
   cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
 }
 
 .menu {
