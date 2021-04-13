@@ -73,6 +73,7 @@ body {
   transition: height 0.3s ease-in-out, padding 0.3s ease-in-out;
   &__heading {
     text-align: left;
+    cursor: default;
   }
   &__items {
     list-style: none;
@@ -164,6 +165,9 @@ body {
     align-items: center;
     background: none;
     color: white;
+    &__heading {
+      cursor: pointer;
+    }
     &__toggle {
       display: unset;
       background: none;

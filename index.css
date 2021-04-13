@@ -68,6 +68,7 @@ body {
 }
 .menu__heading {
   text-align: left;
+  cursor: default;
 }
 .menu__items {
   list-style: none;
@@ -159,6 +160,9 @@ body {
     align-items: center;
     background: none;
     color: white;
+  }
+  .menu__heading {
+    cursor: pointer;
   }
   .menu__toggle {
     display: unset;
