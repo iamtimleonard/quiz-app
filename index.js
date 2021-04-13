@@ -1,5 +1,7 @@
 //url: https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple
 let quiz;
+const menuToggle = document.querySelector(".header__toggle");
+const menu = document.querySelector(".menu");
 const categoriesMenu = document.querySelector(".categories");
 const difficultyMenu = document.querySelector(".difficulty");
 const questionText = document.querySelector(".question");
@@ -13,6 +15,10 @@ const userChoices = {
   category: "9",
   difficulty: "easy",
 };
+
+menuToggle.addEventListener("click", () => {
+  menu.classList.toggle("menu--visible");
+});
 
 categories.forEach((category) => {
   const item = document.createElement("li");

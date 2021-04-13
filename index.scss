@@ -23,7 +23,14 @@ body {
   display: flex;
   justify-content: space-around;
   background-color: aliceblue;
+  height: 0;
+  overflow: hidden;
   color: #343434;
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: height 0.3s ease-in-out;
   &__heading {
     text-align: left;
   }
@@ -41,6 +48,9 @@ body {
   }
   &--chosen {
     font-weight: 700;
+  }
+  &--visible {
+    height: 200px;
   }
 }
 
