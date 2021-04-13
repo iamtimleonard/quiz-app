@@ -111,20 +111,24 @@ button:hover {
 }
 
 @media (min-width: 700px) {
+  .header {
+    justify-content: space-around;
+    &__toggle {
+      display: none;
+    }
+  }
+  .menu {
+    position: inherit;
+    height: auto;
+    transform: unset;
+    align-items: center;
+    &__items {
+      height: 0;
+      overflow: hidden;
+    }
+  }
   .answer:hover {
     background-color: #343434;
     color: #ababab;
-  }
-  nav {
-    flex-direction: column;
-    justify-content: start;
-    align-items: flex-start;
-  }
-  .categories,
-  .difficulties {
-    flex-direction: row;
-  }
-  .nav-item {
-    margin: 0 1rem;
   }
 }
