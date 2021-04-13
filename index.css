@@ -36,6 +36,7 @@ body {
 
 .header {
   display: flex;
+  padding: 2rem;
 }
 .header__toggle {
   margin-left: auto;
@@ -46,13 +47,16 @@ body {
   justify-content: space-around;
   background-color: aliceblue;
   height: 0;
+  padding: 0;
+  border-radius: 15px;
   overflow: hidden;
-  color: #343434;
   position: fixed;
-  top: 6rem;
+  width: 90%;
+  max-width: 50rem;
+  top: 8rem;
   left: 50%;
   transform: translateX(-50%);
-  transition: height 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .menu__heading {
   text-align: left;
@@ -73,7 +77,8 @@ body {
   font-weight: 700;
 }
 .menu--visible {
-  height: 20rem;
+  height: 25rem;
+  padding: 3rem;
 }
 
 .answers {
@@ -145,6 +150,7 @@ button:hover {
     height: auto;
     transform: unset;
     align-items: center;
+    background: none;
   }
   .menu__items {
     height: 0;
