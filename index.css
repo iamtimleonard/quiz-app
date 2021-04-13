@@ -81,6 +81,9 @@ body {
 .menu__item:hover {
   font-weight: 700;
 }
+.menu__toggle {
+  display: none;
+}
 .menu--chosen {
   font-weight: 700;
 }
@@ -155,10 +158,24 @@ body {
     transform: unset;
     align-items: center;
     background: none;
+    color: white;
+  }
+  .menu__toggle {
+    display: unset;
+    background: none;
+    border: none;
   }
   .menu__items {
     height: 0;
     overflow: hidden;
+    position: fixed;
+    top: 8rem;
+    background: #ababab;
+    border-radius: 15px;
+    transition: height 0.2s ease-in-out, padding 0.2s ease-in-out;
+  }
+  .menu--active {
+    padding: 1rem;
   }
 
   .answer:hover {

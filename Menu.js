@@ -1,7 +1,10 @@
 const menuToggle = document.querySelector(".header__toggle");
+const menuHeadings = document.querySelectorAll(".menu__heading");
 const menu = document.querySelector(".menu");
 const categoriesMenu = document.querySelector(".categories");
 const difficultyMenu = document.querySelector(".difficulty");
+let categoryChoices;
+let difficultyChoices;
 
 menuToggle.addEventListener("click", () => {
   menu.classList.toggle("menu--visible");
@@ -25,6 +28,25 @@ difficulty.forEach((difficulty) => {
   item.classList.add("menu__item");
   difficultyMenu.appendChild(item);
   difficultyChoices = document.querySelectorAll(".difficulty");
+});
+
+menuHeadings.forEach((heading) => {
+  heading.addEventListener("click", (e) => {
+    if (window.innerWidth < 700) {
+      return;
+    }
+    let targetList = heading.nextElementSibling;
+    if (targetList.classList.contains("menu--active")) {
+      targetList.style.height = "0px";
+      targetList.classList.remove("menu--active");
+    } else {
+      targetList.classList.add("menu--active");
+      let targetHeight =
+        targetList.children[0].clientHeight *
+        (targetList.childElementCount + 2);
+      targetList.style.height = `${targetHeight}px`;
+    }
+  });
 });
 
 const setMenu = () => {

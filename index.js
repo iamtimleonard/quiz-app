@@ -6,8 +6,6 @@ const answerList = document.querySelector(".answers");
 const scoreHeading = document.querySelector(".score-heading");
 const quizButton = document.querySelector(".quiz__button");
 const responseHeading = document.querySelector(".response");
-let categoryChoices;
-let difficultyChoices;
 const userChoices = {
   category: "9",
   difficulty: "easy",

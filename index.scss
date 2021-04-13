@@ -86,6 +86,9 @@ body {
       font-weight: 700;
     }
   }
+  &__toggle {
+    display: none;
+  }
   &--chosen {
     font-weight: 700;
   }
@@ -160,13 +163,27 @@ body {
     transform: unset;
     align-items: center;
     background: none;
+    color: white;
+    &__toggle {
+      display: unset;
+      background: none;
+      border: none;
+    }
     &__items {
       height: 0;
       overflow: hidden;
+      position: fixed;
+      top: 8rem;
+      background: $main-grey-light;
+      border-radius: 15px;
+      transition: height 0.2s ease-in-out, padding 0.2s ease-in-out;
+    }
+    &--active {
+      padding: 1rem;
     }
   }
   .answer:hover {
     background-color: $main-grey;
-    color: #ababab;
+    color: $main-grey-light;
   }
 }
