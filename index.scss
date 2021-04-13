@@ -1,6 +1,8 @@
 $main-grey: #343434;
 $main-grey-light: #ababab;
 $main-blue: aliceblue;
+$correct: #00bb00;
+$incorrect: #bb0000;
 
 * {
   margin: 0;
@@ -138,11 +140,11 @@ body {
 }
 
 .correct {
-  color: #00bb00;
+  color: $correct;
 }
 
 .incorrect {
-  color: #bb0000;
+  color: $incorrect;
 }
 
 @media (min-width: 700px) {
