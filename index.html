@@ -1,49 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz!</title>
     <link rel="shortcut icon" type="image/jpg" href="./images/favicon.ico" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
-</head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
 
-<body>
-    <nav>
-        <div class="title nav-title">
-            Trivia Game
-        </div>
-        <div class="categories nav-title">
+  <body>
+    <header class="header">
+      <h1 class="header__title">Trivia Game</h1>
+      <nav class="menu">
+        <div class="menu__list">
+          <h2 class="menu__heading">
             Categories
-            <div class="category nav-item" id="9">General knowledge</div>
-            <div class="category nav-item" id="10">Books</div>
-            <div class="category nav-item" id="11">Film</div>
-            <div class="category nav-item" id="12">Music</div>
-            <div class="category nav-item" id="18">Computers</div>
-            <div class="category nav-item" id="23">History</div>
+            <button class="menu__toggle">
+              <img src="./images/icon-arrow-light.svg" alt="" />
+            </button>
+          </h2>
+          <ul class="menu__items categories"></ul>
         </div>
-        <div class="difficulties nav-title">Difficulty
-            <div class="difficulty nav-item" id="easy">Easy</div>
-            <div class="difficulty nav-item" id="medium">Medium</div>
-            <div class="difficulty nav-item" id="hard">Hard</div>
+        <div class="menu__list">
+          <h2 class="menu__heading">
+            Difficulty
+            <button class="menu__toggle">
+              <img src="./images/icon-arrow-light.svg" alt="" />
+            </button>
+          </h2>
+          <ul class="menu__items difficulty"></ul>
         </div>
-    </nav>
-    <div class="container">
+      </nav>
+      <button class="header__toggle">
+        <img src="./images/icon-hamburger.svg" alt="menu toggle" />
+      </button>
+    </header>
+    <main>
+      <div class="container">
         <h1 class="score-heading">Your score: 0</h1>
         <h4 class="response">Please choose a category above.</h4>
         <h3 class="question"></h3>
         <ul class="answers"></ul>
-        <button class="hidden">Start Quiz</button>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
-        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
-        crossorigin="anonymous"></script>
+        <button class="quiz__button hidden">Start Quiz</button>
+      </div>
+    </main>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="MenuData.js"></script>
+    <script src="Menu.js"></script>
     <script src="questionClass.js"></script>
     <script src="quizClass.js"></script>
     <script src="index.js"></script>
-</body>
-
+  </body>
 </html>

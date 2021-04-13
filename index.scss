@@ -1,3 +1,9 @@
+$main-grey: #343434;
+$main-grey-light: #ababab;
+$main-blue: aliceblue;
+$correct: #00bb00;
+$incorrect: #bb0000;
+
 * {
   margin: 0;
   padding: 0;
@@ -36,24 +42,24 @@ body {
 .header {
   display: flex;
   padding: 2rem;
-  background: #ababab;
-  box-shadow: 0 0 1rem 1rem #ababab;
-}
-.header__title {
-  color: white;
-}
-.header__toggle {
-  margin-left: auto;
-  cursor: pointer;
-  background: none;
-  border: none;
-  outline: none;
+  background: $main-grey-light;
+  box-shadow: 0 0 1rem 1rem $main-grey-light;
+  &__title {
+    color: white;
+  }
+  &__toggle {
+    margin-left: auto;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+  }
 }
 
 .menu {
   display: flex;
   justify-content: space-around;
-  background-color: aliceblue;
+  background-color: $main-blue;
   height: 0;
   padding: 0;
   border-radius: 15px;
@@ -65,32 +71,32 @@ body {
   left: 50%;
   transform: translateX(-50%);
   transition: height 0.3s ease-in-out, padding 0.3s ease-in-out;
-}
-.menu__heading {
-  text-align: left;
-  cursor: default;
-}
-.menu__items {
-  list-style: none;
-  text-align: left;
-}
-.menu__item {
-  font-weight: 400;
-  cursor: pointer;
-  margin: 0.2rem;
-}
-.menu__item:hover {
-  font-weight: 700;
-}
-.menu__toggle {
-  display: none;
-}
-.menu--chosen {
-  font-weight: 700;
-}
-.menu--visible {
-  height: 25rem;
-  padding: 3rem;
+  &__heading {
+    text-align: left;
+    cursor: default;
+  }
+  &__items {
+    list-style: none;
+    text-align: left;
+  }
+  &__item {
+    font-weight: 400;
+    cursor: pointer;
+    margin: 0.2rem;
+    &:hover {
+      font-weight: 700;
+    }
+  }
+  &__toggle {
+    display: none;
+  }
+  &--chosen {
+    font-weight: 700;
+  }
+  &--visible {
+    height: 25rem;
+    padding: 3rem;
+  }
 }
 
 .answers {
@@ -107,7 +113,7 @@ body {
 .quiz__button {
   border: none;
   background-color: #086abb;
-  color: aliceblue;
+  color: $main-blue;
   padding: 1rem;
   border-radius: 5px;
   cursor: pointer;
@@ -121,7 +127,7 @@ body {
   width: 90%;
   max-width: 100rem;
   margin: 8rem auto;
-  background-color: aliceblue;
+  background-color: $main-blue;
   padding: 3rem;
   border-radius: 10px;
 }
@@ -134,25 +140,24 @@ body {
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 10px;
-  border: 1px solid #343434;
+  border: 1px solid $main-grey;
 }
 
 .correct {
-  color: #00bb00;
+  color: $correct;
 }
 
 .incorrect {
-  color: #bb0000;
+  color: $incorrect;
 }
 
 @media (min-width: 700px) {
   .header {
     justify-content: space-around;
+    &__toggle {
+      display: none;
+    }
   }
-  .header__toggle {
-    display: none;
-  }
-
   .menu {
     position: inherit;
     height: auto;
@@ -160,32 +165,29 @@ body {
     align-items: center;
     background: none;
     color: white;
+    &__heading {
+      cursor: pointer;
+    }
+    &__toggle {
+      display: unset;
+      background: none;
+      border: none;
+    }
+    &__items {
+      height: 0;
+      overflow: hidden;
+      position: fixed;
+      top: 8rem;
+      background: $main-grey-light;
+      border-radius: 15px;
+      transition: height 0.2s ease-in-out, padding 0.2s ease-in-out;
+    }
+    &--active {
+      padding: 1rem;
+    }
   }
-  .menu__heading {
-    cursor: pointer;
-  }
-  .menu__toggle {
-    display: unset;
-    background: none;
-    border: none;
-  }
-  .menu__items {
-    height: 0;
-    overflow: hidden;
-    position: fixed;
-    top: 8rem;
-    background: #ababab;
-    border-radius: 15px;
-    transition: height 0.2s ease-in-out, padding 0.2s ease-in-out;
-  }
-  .menu--active {
-    padding: 1rem;
-  }
-
   .answer:hover {
-    background-color: #343434;
-    color: #ababab;
+    background-color: $main-grey;
+    color: $main-grey-light;
   }
 }
-
-/*# sourceMappingURL=index.css.map */
