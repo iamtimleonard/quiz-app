@@ -1,11 +1,11 @@
 //url: https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple
 let quiz;
 
-const questionText = document.querySelector(".question");
-const answerList = document.querySelector(".answers");
-const scoreHeading = document.querySelector(".score-heading");
+const questionText = document.querySelector(".quiz__question");
+const answerList = document.querySelector(".quiz__answers");
+const scoreHeading = document.querySelector(".quiz__score");
 const quizButton = document.querySelector(".quiz__button");
-const responseHeading = document.querySelector(".response");
+const responseHeading = document.querySelector(".quiz__response");
 const userChoices = {
   category: "9",
   difficulty: "easy",
@@ -16,7 +16,7 @@ const initialize = (data) => (quiz = new Quiz(data));
 const constructAnswer = (answer) => {
   item = document.createElement("li");
   item.textContent = atob(answer);
-  item.classList.add("answer");
+  item.classList.add("quiz__answer");
   item.setAttribute("id", answer);
   answerList.appendChild(item);
   return item;
@@ -35,7 +35,7 @@ const prepareNextQuestion = () => {
 };
 
 const removeAnswers = () => {
-  document.querySelectorAll(".answer").forEach(function (answer) {
+  document.querySelectorAll(".quiz__answer").forEach(function (answer) {
     answer.remove();
   });
 };
@@ -54,14 +54,14 @@ const deliverResult = (userAnswer) => {
     responseHeading.textContent = `Correct! The answer was: ${atob(
       question.correctAnswer
     )}`;
-    responseHeading.classList.add("correct");
-    responseHeading.classList.remove("incorrect");
+    responseHeading.classList.add("quiz--correct");
+    responseHeading.classList.remove("quiz--incorrect");
   } else {
     responseHeading.textContent = `Incorrect! The answer was: ${atob(
       question.correctAnswer
     )}`;
-    responseHeading.classList.add("incorrect");
-    responseHeading.classList.remove("correct");
+    responseHeading.classList.add("quiz--incorrect");
+    responseHeading.classList.remove("quiz--correct");
   }
 };
 
