@@ -43,7 +43,7 @@ body {
   display: flex;
   padding: 2rem;
   background: $main-grey-light;
-  box-shadow: 0 0 1rem 1rem $main-grey-light;
+  box-shadow: 0 0.5rem 0.5rem $main-grey-light;
   &__title {
     color: white;
   }
@@ -59,18 +59,20 @@ body {
 .menu {
   display: flex;
   justify-content: space-around;
-  background-color: $main-blue;
+  background-color: $main-grey-light;
+  color: white;
   height: 0;
+  width: 0;
   padding: 0;
   border-radius: 15px;
   overflow: hidden;
   position: fixed;
-  width: 90%;
   max-width: 50rem;
-  top: 8rem;
+  top: 7rem;
   left: 50%;
   transform: translateX(-50%);
-  transition: height 0.3s ease-in-out, padding 0.3s ease-in-out;
+  transition: height 0.3s ease-in-out 0.2s, padding 0.3s ease-in-out,
+    width 0.3s ease-in-out;
   &__heading {
     text-align: left;
     cursor: default;
@@ -96,6 +98,8 @@ body {
   &--visible {
     height: 25rem;
     padding: 3rem;
+    width: 40rem;
+    box-shadow: 0 0.5rem 0.5rem $main-grey-light;
   }
 }
 
@@ -165,6 +169,7 @@ body {
     align-items: center;
     background: none;
     color: white;
+    width: 90%;
     &__heading {
       cursor: pointer;
     }
@@ -177,7 +182,7 @@ body {
       height: 0;
       overflow: hidden;
       position: fixed;
-      top: 8rem;
+      top: 7rem;
       background: $main-grey-light;
       border-radius: 15px;
       transition: height 0.2s ease-in-out, padding 0.2s ease-in-out;
