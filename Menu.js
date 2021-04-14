@@ -30,6 +30,15 @@ difficulty.forEach((difficulty) => {
   difficultyChoices = document.querySelectorAll(".difficulty");
 });
 
+document.addEventListener("click", (e) => {
+  const openMenus = document.querySelectorAll(".menu--active");
+  openMenus.forEach((menu) => {
+    if (menu.parentElement !== e.target.parentElement) {
+      closeList(menu);
+    }
+  });
+});
+
 const closeList = (target) => {
   target.style.height = "0px";
   target.classList.remove("menu--active");
@@ -94,8 +103,4 @@ window.addEventListener("resize", () => {
   if (window.innerWidth > 700) {
     menu.classList.remove("menu--visible");
   }
-});
-
-document.addEventListener("click", (e) => {
-  console.dir(e.target);
 });

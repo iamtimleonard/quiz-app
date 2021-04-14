@@ -189,6 +189,7 @@ body {
     }
     &--active {
       padding: 1rem;
+      box-shadow: 0 0.5rem 0.5rem 0.1rem $main-grey-light;
     }
   }
   .answer:hover {
