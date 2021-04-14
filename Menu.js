@@ -30,21 +30,37 @@ difficulty.forEach((difficulty) => {
   difficultyChoices = document.querySelectorAll(".difficulty");
 });
 
+document.addEventListener("click", (e) => {
+  const openMenus = document.querySelectorAll(".menu--active");
+  openMenus.forEach((menu) => {
+    if (menu.parentElement !== e.target.parentElement) {
+      closeList(menu);
+    }
+  });
+});
+
+const closeList = (target) => {
+  target.style.height = "0px";
+  target.classList.remove("menu--active");
+};
+
+const openList = (target) => {
+  target.classList.add("menu--active");
+  let targetHeight =
+    target.children[0].clientHeight * (target.childElementCount + 2);
+  target.style.height = `${targetHeight}px`;
+};
+
 menuHeadings.forEach((heading) => {
-  heading.addEventListener("click", (e) => {
+  heading.addEventListener("click", () => {
     if (window.innerWidth < 700) {
       return;
     }
     let targetList = heading.nextElementSibling;
     if (targetList.classList.contains("menu--active")) {
-      targetList.style.height = "0px";
-      targetList.classList.remove("menu--active");
+      closeList(targetList);
     } else {
-      targetList.classList.add("menu--active");
-      let targetHeight =
-        targetList.children[0].clientHeight *
-        (targetList.childElementCount + 2);
-      targetList.style.height = `${targetHeight}px`;
+      openList(targetList);
     }
   });
 });
@@ -81,4 +97,10 @@ difficultyChoices.forEach((difficulty) => {
     reset();
     quizButton.textContent = "Start new quiz";
   });
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 700) {
+    menu.classList.remove("menu--visible");
+  }
 });
