@@ -14,10 +14,12 @@ const userChoices = {
 const initialize = (data) => (quiz = new Quiz(data));
 
 const constructAnswer = (answer) => {
-  item = document.createElement("li");
+  let item = document.createElement("li");
   item.textContent = atob(answer);
   item.classList.add("quiz__answer");
   item.setAttribute("id", answer);
+  item.setAttribute("role", "button");
+  item.setAttribute("tabindex", "0");
   answerList.appendChild(item);
   return item;
 };
@@ -80,6 +82,13 @@ const moveOn = () => {
       userAnswer = e.target.id;
       deliverResult(userAnswer);
       moveOn();
+    });
+    item.addEventListener("keyup", (e) => {
+      if (e.keyCode === 13) {
+        userAnswer = e.target.id;
+        deliverResult(userAnswer);
+        moveOn();
+      }
     });
   }
 };

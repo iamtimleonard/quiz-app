@@ -63,6 +63,19 @@ menuHeadings.forEach((heading) => {
       openList(targetList);
     }
   });
+  heading.addEventListener("keypress", (e) => {
+    if (window.innerWidth < 700) {
+      return;
+    }
+    if (e.keyCode === 13) {
+      let targetList = heading.nextElementSibling;
+      if (targetList.classList.contains("menu--active")) {
+        closeList(targetList);
+      } else {
+        openList(targetList);
+      }
+    }
+  });
 });
 
 const setMenu = () => {

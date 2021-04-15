@@ -103,15 +103,6 @@ body {
   }
 }
 
-.quiz__button {
-  border: none;
-  background-color: #086abb;
-  color: $main-blue;
-  padding: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 .hidden {
   display: none;
 }
@@ -126,9 +117,6 @@ body {
   &__answers {
     width: 100%;
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 0.2rem;
     justify-items: center;
     padding-left: 0;
     margin: 0 auto;
@@ -142,6 +130,14 @@ body {
     padding: 0.5rem;
     border-radius: 10px;
     border: 1px solid $main-grey;
+  }
+  &__button {
+    border: none;
+    background-color: #086abb;
+    color: $main-blue;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
   }
   &--correct {
     color: $correct;
@@ -186,6 +182,11 @@ body {
     &--active {
       padding: 1rem;
       box-shadow: 0 0.5rem 0.5rem 0.1rem $main-grey-light;
+    }
+  }
+  .quiz {
+    &__answers {
+      grid-template: 1fr 1fr / 1fr 1fr;
     }
   }
   .answer:hover {
