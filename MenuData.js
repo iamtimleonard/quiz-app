@@ -1,32 +1,45 @@
 const categories = [
   {
     title: "General Knowledge",
-    id: 9,
+    data: 9,
   },
   {
     title: "Books",
-    id: 10,
+    data: 10,
   },
   {
     title: "Film",
-    id: 11,
+    data: 11,
   },
   {
     title: "Music",
-    id: 12,
+    data: 12,
   },
   {
     title: "Computer",
-    id: 18,
+    data: 18,
   },
   {
     title: "History",
-    id: 23,
+    data: 23,
   },
   {
     title: "Mythology",
-    id: 20,
+    data: 20,
   },
 ];
 
-const difficulty = ["easy", "medium", "hard"];
+const difficulty = [
+  {
+    title: "Easy",
+    data: "easy",
+  },
+  {
+    title: "Medium",
+    data: "medium",
+  },
+  {
+    title: "Hard",
+    data: "hard",
+  },
+];

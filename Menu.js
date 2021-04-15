@@ -13,19 +13,21 @@ menuToggle.addEventListener("click", () => {
 categories.forEach((category) => {
   const item = document.createElement("li");
   item.textContent = category.title;
-  item.id = category.id;
+  item.id = category.data;
   item.classList.add("category");
   item.classList.add("menu__item");
+  item.setAttribute("tabindex", "0");
   categoriesMenu.appendChild(item);
   categoryChoices = document.querySelectorAll(".category");
 });
 
 difficulty.forEach((difficulty) => {
   const item = document.createElement("li");
-  item.textContent = difficulty;
-  item.id = difficulty;
+  item.textContent = difficulty.title;
+  item.id = difficulty.data;
   item.classList.add("difficulty");
   item.classList.add("menu__item");
+  item.setAttribute("tabindex", "0");
   difficultyMenu.appendChild(item);
   difficultyChoices = document.querySelectorAll(".difficulty");
 });
@@ -37,6 +39,17 @@ document.addEventListener("click", (e) => {
       closeList(menu);
     }
   });
+});
+
+document.addEventListener("keyup", (e) => {
+  if (e.keyCode === 13) {
+    const openMenus = document.querySelectorAll(".menu--active");
+    openMenus.forEach((menu) => {
+      if (menu.parentElement !== e.target.parentElement) {
+        closeList(menu);
+      }
+    });
+  }
 });
 
 const closeList = (target) => {
@@ -97,6 +110,18 @@ categoryChoices.forEach((category) => {
     reset();
     quizButton.textContent = "Start new quiz";
   });
+  category.addEventListener("keyup", async (e) => {
+    if (e.keyCode === 13) {
+      userChoices.category = e.target.id;
+      const { data } = await axios.get(
+        `https://opentdb.com/api.php?amount=10&category=${userChoices.category}&difficulty=${userChoices.difficulty}&type=multiple&encode=base64`
+      );
+      initialize(data);
+      setMenu();
+      reset();
+      quizButton.textContent = "Start new quiz";
+    }
+  });
 });
 
 difficultyChoices.forEach((difficulty) => {
@@ -109,6 +134,18 @@ difficultyChoices.forEach((difficulty) => {
     setMenu();
     reset();
     quizButton.textContent = "Start new quiz";
+  });
+  difficulty.addEventListener("keyup", async (e) => {
+    if (e.keyCode === 13) {
+      userChoices.difficulty = e.target.id;
+      const { data } = await axios.get(
+        `https://opentdb.com/api.php?amount=10&category=${userChoices.category}&difficulty=${userChoices.difficulty}&type=multiple&encode=base64`
+      );
+      initialize(data);
+      setMenu();
+      reset();
+      quizButton.textContent = "Start new quiz";
+    }
   });
 });
 
