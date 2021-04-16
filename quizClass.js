@@ -13,9 +13,7 @@ class Quiz {
 
   handleResult = (isCorrect, userAnswer) => {
     if (isCorrect) {
-      console.log("adding one to score");
       this.score++;
-      console.log(this.score);
     }
     this.questions[this.currentQuestion - 1].correct = isCorrect;
     this.questions[this.currentQuestion - 1].userAnswer = userAnswer;

@@ -134,15 +134,12 @@ body {
   cursor: pointer;
 }
 .quiz__res-q {
+  font-size: 2.4rem;
+  margin-top: 1.4rem;
+  text-align: left;
+}
+.quiz__res-correct, .quiz__res-user {
   font-size: 1.8rem;
-  text-align: left;
-}
-.quiz__res-correct {
-  font-size: 1.4rem;
-  text-align: left;
-}
-.quiz__res-user {
-  font-size: 1.4rem;
   text-align: left;
 }
 .quiz--correct {

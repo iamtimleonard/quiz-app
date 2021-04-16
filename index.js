@@ -96,21 +96,22 @@ const showResults = () => {
   scoreHeading.textContent = `Your got ${quiz.score} out of ${quiz.questions.length} questions right`;
   questionText.textContent = "";
   responseHeading.textContent = "Replay or choose a new quiz";
-  for (let {
-    question,
-    correct_answer,
-    userAnswer,
-    correct,
-  } of quiz.questions) {
-    constructResult(question, "quiz__res-q", correct);
-    constructResult(correct_answer, "quiz__res-correct", correct);
-    constructResult(userAnswer, "quiz__res-user", correct);
-  }
+  quiz.questions.forEach(
+    ({ question, correct_answer, userAnswer, correct }, index) => {
+      constructResult(question, "quiz__res-q", correct, index);
+      constructResult(correct_answer, "quiz__res-correct", correct);
+      constructResult(userAnswer, "quiz__res-user", correct);
+    }
+  );
 };
 
-const constructResult = (text, type, isCorrect) => {
+const constructResult = (text, type, isCorrect, index) => {
   let item = document.createElement("p");
-  item.textContent = `${atob(text)}`;
+  if (type === "quiz__res-q") item.textContent = `${index + 1}. ${atob(text)}`;
+  if (type === "quiz__res-correct")
+    item.textContent = `Correct answer: ${atob(text)}`;
+  if (type === "quiz__res-user")
+    item.textContent = `Your answer: ${atob(text)}`;
   item.classList.add(type);
   let showCorrect = isCorrect ? "quiz--correct" : "quiz--incorrect";
   item.classList.add("res");
