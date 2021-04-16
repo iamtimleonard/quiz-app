@@ -51,7 +51,7 @@ const reset = () => {
 };
 
 const deliverResult = (userAnswer) => {
-  quiz.handleResult(question.isCorrect(userAnswer));
+  quiz.handleResult(question.isCorrect(userAnswer), userAnswer);
   if (question.isCorrect(userAnswer)) {
     responseHeading.textContent = `Correct! The answer was: ${atob(
       question.correctAnswer

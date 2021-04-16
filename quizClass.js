@@ -11,10 +11,11 @@ class Quiz {
     return nextQuestion;
   };
 
-  handleResult = (isCorrect) => {
+  handleResult = (isCorrect, userAnswer) => {
     if (isCorrect) {
       this.score++;
     }
     this.questions[this.currentQuestion - 1].correct = isCorrect;
+    this.questions[this.currentQuestion - 1].userAnswer = userAnswer;
   };
 }
