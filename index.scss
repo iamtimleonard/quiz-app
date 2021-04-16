@@ -139,6 +139,24 @@ body {
     border-radius: 5px;
     cursor: pointer;
   }
+  &__res-q {
+    font: {
+      size: 1.8rem;
+    }
+    text-align: left;
+  }
+  &__res-correct {
+    font: {
+      size: 1.4rem;
+    }
+    text-align: left;
+  }
+  &__res-user {
+    font: {
+      size: 1.4rem;
+    }
+    text-align: left;
+  }
   &--correct {
     color: $correct;
   }

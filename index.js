@@ -52,25 +52,14 @@ const reset = () => {
 
 const deliverResult = (userAnswer) => {
   quiz.handleResult(question.isCorrect(userAnswer), userAnswer);
-  if (question.isCorrect(userAnswer)) {
-    responseHeading.textContent = `Correct! The answer was: ${atob(
-      question.correctAnswer
-    )}`;
-    responseHeading.classList.add("quiz--correct");
-    responseHeading.classList.remove("quiz--incorrect");
-  } else {
-    responseHeading.textContent = `Incorrect! The answer was: ${atob(
-      question.correctAnswer
-    )}`;
-    responseHeading.classList.add("quiz--incorrect");
-    responseHeading.classList.remove("quiz--correct");
-  }
 };
 
 const moveOn = () => {
   prepareNextQuestion();
-  scoreHeading.textContent = `Your score: ${quiz.score}`;
+  responseHeading.textContent = "";
   if (!quiz.isActive) {
+    reset();
+    quizButton.textContent = "Retake quiz";
     showResults();
     return;
   }
@@ -94,31 +83,37 @@ const moveOn = () => {
 
 quizButton.addEventListener("click", () => {
   quiz.isActive = true;
+  scoreHeading.textContent = "";
   responseHeading.textContent = `Test your knowledge.`;
-  responseHeading.classList.remove("correct");
-  responseHeading.classList.remove("incorrect");
+  document.querySelectorAll(".res").forEach((item) => {
+    item.remove();
+  });
   moveOn();
   quizButton.classList.add("hidden");
 });
 
 const showResults = () => {
-  for (let question of quiz.questions) {
-    constructResult(question);
+  scoreHeading.textContent = `Your got ${quiz.score} out of ${quiz.questions.length} questions right`;
+  questionText.textContent = "";
+  responseHeading.textContent = "Replay or choose a new quiz";
+  for (let {
+    question,
+    correct_answer,
+    userAnswer,
+    correct,
+  } of quiz.questions) {
+    constructResult(question, "quiz__res-q", correct);
+    constructResult(correct_answer, "quiz__res-correct", correct);
+    constructResult(userAnswer, "quiz__res-user", correct);
   }
 };
 
-const constructResult = (question) => {
-  let questionReviewText = document.createElement("h3");
-  questionText.textContent = "";
-  responseHeading.textContent = "";
-  questionReviewText.textContent = atob(question.question);
-  let correctAnswer = document.createElement("p");
-  correctAnswer.textContent = `Correct answer: ${atob(
-    question.correct_answer
-  )}`;
-  let userAnswer = document.createElement("p");
-  userAnswer.textContent = `You answered: ${atob(question.userAnswer)}`;
-  document.querySelector(".quiz").appendChild(questionReviewText);
-  document.querySelector(".quiz").appendChild(correctAnswer);
-  document.querySelector(".quiz").appendChild(userAnswer);
+const constructResult = (text, type, isCorrect) => {
+  let item = document.createElement("p");
+  item.textContent = `${atob(text)}`;
+  item.classList.add(type);
+  let showCorrect = isCorrect ? "quiz--correct" : "quiz--incorrect";
+  item.classList.add("res");
+  item.classList.add(showCorrect);
+  document.querySelector(".quiz").appendChild(item);
 };
