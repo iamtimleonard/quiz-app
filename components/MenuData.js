@@ -27,6 +27,10 @@ const categories = [
     title: "Mythology",
     data: 20,
   },
+  {
+    title: "Animals",
+    data: 27,
+  },
 ];
 
 const difficulty = [
