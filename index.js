@@ -30,7 +30,7 @@ const prepareNextQuestion = () => {
     question = quiz.getNextQuestion();
   } catch {
     quiz.isActive = false;
-    return (questionText.textContent = `Quiz over! You got ${quiz.score} out of ${quiz.questions.length} questions correct.`);
+    return;
   }
   question.shuffleAnswers();
   questionText.textContent = atob(question.question);
@@ -71,8 +71,7 @@ const moveOn = () => {
   prepareNextQuestion();
   scoreHeading.textContent = `Your score: ${quiz.score}`;
   if (!quiz.isActive) {
-    reset();
-    quizButton.textContent = "Retake quiz";
+    showResults();
     return;
   }
   let userAnswer = "";
@@ -101,3 +100,25 @@ quizButton.addEventListener("click", () => {
   moveOn();
   quizButton.classList.add("hidden");
 });
+
+const showResults = () => {
+  for (let question of quiz.questions) {
+    constructResult(question);
+  }
+};
+
+const constructResult = (question) => {
+  let questionReviewText = document.createElement("h3");
+  questionText.textContent = "";
+  responseHeading.textContent = "";
+  questionReviewText.textContent = atob(question.question);
+  let correctAnswer = document.createElement("p");
+  correctAnswer.textContent = `Correct answer: ${atob(
+    question.correct_answer
+  )}`;
+  let userAnswer = document.createElement("p");
+  userAnswer.textContent = `You answered: ${atob(question.userAnswer)}`;
+  document.querySelector(".quiz").appendChild(questionReviewText);
+  document.querySelector(".quiz").appendChild(correctAnswer);
+  document.querySelector(".quiz").appendChild(userAnswer);
+};
