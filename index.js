@@ -58,9 +58,9 @@ const moveOn = () => {
   prepareNextQuestion();
   responseHeading.textContent = "";
   if (!quiz.isActive) {
-    reset();
     quizButton.textContent = "Retake quiz";
     showResults();
+    reset();
     return;
   }
   let userAnswer = "";
