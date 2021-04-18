@@ -93,7 +93,7 @@ quizButton.addEventListener("click", () => {
 });
 
 const showResults = () => {
-  scoreHeading.textContent = `Your got ${quiz.score} out of ${quiz.questions.length} questions right`;
+  scoreHeading.textContent = `You got ${quiz.score} out of ${quiz.questions.length} questions right`;
   questionText.textContent = "";
   responseHeading.textContent = "Replay or choose a new quiz";
   quiz.questions.forEach(
