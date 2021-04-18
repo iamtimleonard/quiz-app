@@ -33,7 +33,7 @@ const categories = [
   },
 ];
 
-const difficulty = [
+const difficulties = [
   {
     title: "Easy",
     data: "easy",
