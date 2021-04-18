@@ -10,25 +10,23 @@ menuToggle.addEventListener("click", () => {
   menu.classList.toggle("menu--visible");
 });
 
-categories.forEach((category) => {
+const constructMenuItem = (node, className, parent) => {
   const item = document.createElement("li");
-  item.textContent = category.title;
-  item.id = category.data;
-  item.classList.add("category");
+  item.textContent = node.title;
+  item.id = node.data;
+  item.classList.add(className);
   item.classList.add("menu__item");
   item.setAttribute("tabindex", "0");
-  categoriesMenu.appendChild(item);
+  parent.appendChild(item);
+};
+
+categories.forEach((category) => {
+  constructMenuItem(category, "category", categoriesMenu);
   categoryChoices = document.querySelectorAll(".category");
 });
 
-difficulty.forEach((difficulty) => {
-  const item = document.createElement("li");
-  item.textContent = difficulty.title;
-  item.id = difficulty.data;
-  item.classList.add("difficulty");
-  item.classList.add("menu__item");
-  item.setAttribute("tabindex", "0");
-  difficultyMenu.appendChild(item);
+difficulties.forEach((difficulty) => {
+  constructMenuItem(difficulty, "difficulty", difficultyMenu);
   difficultyChoices = document.querySelectorAll(".difficulty");
 });
 
@@ -64,29 +62,28 @@ const openList = (target) => {
   target.style.height = `${targetHeight}px`;
 };
 
+const openMenu = (heading) => {
+  let targetList = heading.nextElementSibling;
+  if (targetList.classList.contains("menu--active")) {
+    closeList(targetList);
+  } else {
+    openList(targetList);
+  }
+};
+
 menuHeadings.forEach((heading) => {
   heading.addEventListener("click", () => {
     if (window.innerWidth < 700) {
       return;
     }
-    let targetList = heading.nextElementSibling;
-    if (targetList.classList.contains("menu--active")) {
-      closeList(targetList);
-    } else {
-      openList(targetList);
-    }
+    openMenu(heading);
   });
   heading.addEventListener("keypress", (e) => {
     if (window.innerWidth < 700) {
       return;
     }
     if (e.keyCode === 13) {
-      let targetList = heading.nextElementSibling;
-      if (targetList.classList.contains("menu--active")) {
-        closeList(targetList);
-      } else {
-        openList(targetList);
-      }
+      openMenu(heading);
     }
   });
 });
@@ -99,52 +96,35 @@ const setMenu = () => {
   document.getElementById(userChoices.difficulty).classList.add("menu--chosen");
 };
 
+const setUserChoice = async (e) => {
+  userChoices.category = e.target.id;
+  const { data } = await axios.get(
+    `https://opentdb.com/api.php?amount=10&category=${userChoices.category}&difficulty=${userChoices.difficulty}&type=multiple&encode=base64`
+  );
+  initialize(data);
+  setMenu();
+  reset();
+  quizButton.textContent = "Start new quiz";
+};
+
 categoryChoices.forEach((category) => {
   category.addEventListener("click", async (e) => {
-    userChoices.category = e.target.id;
-    const { data } = await axios.get(
-      `https://opentdb.com/api.php?amount=10&category=${userChoices.category}&difficulty=${userChoices.difficulty}&type=multiple&encode=base64`
-    );
-    initialize(data);
-    setMenu();
-    reset();
-    quizButton.textContent = "Start new quiz";
+    await setUserChoice(e);
   });
   category.addEventListener("keyup", async (e) => {
     if (e.keyCode === 13) {
-      userChoices.category = e.target.id;
-      const { data } = await axios.get(
-        `https://opentdb.com/api.php?amount=10&category=${userChoices.category}&difficulty=${userChoices.difficulty}&type=multiple&encode=base64`
-      );
-      initialize(data);
-      setMenu();
-      reset();
-      quizButton.textContent = "Start new quiz";
+      await setUserChoice(e);
     }
   });
 });
 
 difficultyChoices.forEach((difficulty) => {
   difficulty.addEventListener("click", async (e) => {
-    userChoices.difficulty = e.target.id;
-    const { data } = await axios.get(
-      `https://opentdb.com/api.php?amount=10&category=${userChoices.category}&difficulty=${userChoices.difficulty}&type=multiple&encode=base64`
-    );
-    initialize(data);
-    setMenu();
-    reset();
-    quizButton.textContent = "Start new quiz";
+    await setUserChoice(e);
   });
   difficulty.addEventListener("keyup", async (e) => {
     if (e.keyCode === 13) {
-      userChoices.difficulty = e.target.id;
-      const { data } = await axios.get(
-        `https://opentdb.com/api.php?amount=10&category=${userChoices.category}&difficulty=${userChoices.difficulty}&type=multiple&encode=base64`
-      );
-      initialize(data);
-      setMenu();
-      reset();
-      quizButton.textContent = "Start new quiz";
+      await setUserChoice(e);
     }
   });
 });
