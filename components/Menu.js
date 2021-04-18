@@ -96,8 +96,8 @@ const setMenu = () => {
   document.getElementById(userChoices.difficulty).classList.add("menu--chosen");
 };
 
-const setUserChoice = async (e) => {
-  userChoices.category = e.target.id;
+const setUserChoice = async (e, type) => {
+  userChoices[type] = e.target.id;
   const { data } = await axios.get(
     `https://opentdb.com/api.php?amount=10&category=${userChoices.category}&difficulty=${userChoices.difficulty}&type=multiple&encode=base64`
   );
@@ -109,22 +109,22 @@ const setUserChoice = async (e) => {
 
 categoryChoices.forEach((category) => {
   category.addEventListener("click", async (e) => {
-    await setUserChoice(e);
+    await setUserChoice(e, "category");
   });
   category.addEventListener("keyup", async (e) => {
     if (e.keyCode === 13) {
-      await setUserChoice(e);
+      await setUserChoice(e, "category");
     }
   });
 });
 
 difficultyChoices.forEach((difficulty) => {
   difficulty.addEventListener("click", async (e) => {
-    await setUserChoice(e);
+    await setUserChoice(e, "difficulty");
   });
   difficulty.addEventListener("keyup", async (e) => {
     if (e.keyCode === 13) {
-      await setUserChoice(e);
+      await setUserChoice(e, "difficulty");
     }
   });
 });
