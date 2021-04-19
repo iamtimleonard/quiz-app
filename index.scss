@@ -30,6 +30,7 @@ h4 {
 
 p,
 button,
+span,
 li {
   font-size: 1.6rem;
 }
@@ -62,7 +63,7 @@ body {
   justify-content: space-around;
   height: 0;
   padding: 0;
-  border-radius: 15px;
+  border-radius: 1rem;
   overflow: hidden;
   position: fixed;
   width: 100%;
@@ -104,6 +105,17 @@ body {
   display: none;
 }
 
+.display {
+  margin: 4rem auto 0;
+  width: 50%;
+  max-width: 50rem;
+  text-align: left;
+  border: 1px solid $main-grey-light;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.5rem 0.1rem $main-grey-light;
+}
+
 .quiz {
   width: 90%;
   max-width: 100rem;
@@ -111,7 +123,7 @@ body {
   border: 1px solid $main-grey-light;
   box-shadow: 0 0 0.5rem 0.1rem $main-grey-light;
   padding: 3rem;
-  border-radius: 10px;
+  border-radius: 1rem;
   &__answers {
     width: 100%;
     display: grid;
