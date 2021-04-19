@@ -3,6 +3,7 @@ $main-grey-light: #ababab;
 $main-blue: aliceblue;
 $correct: #00bb00;
 $incorrect: #bb0000;
+$main-dark-blue: #086abb;
 
 * {
   margin: 0;
@@ -42,11 +43,7 @@ body {
 .header {
   display: flex;
   padding: 2rem;
-  background: $main-grey-light;
   box-shadow: 0 0.5rem 0.5rem $main-grey-light;
-  &__title {
-    color: white;
-  }
   &__toggle {
     margin-left: auto;
     cursor: pointer;
@@ -54,25 +51,25 @@ body {
     border: none;
     outline: none;
   }
+  &__hamburger {
+    filter: invert(1);
+  }
 }
 
 .menu {
+  background: white;
   display: flex;
   justify-content: space-around;
-  background-color: $main-grey-light;
-  color: white;
   height: 0;
-  width: 0;
   padding: 0;
   border-radius: 15px;
   overflow: hidden;
   position: fixed;
-  max-width: 50rem;
+  width: 100%;
   top: 7rem;
   left: 50%;
   transform: translateX(-50%);
-  transition: height 0.3s ease-in-out 0.2s, padding 0.3s ease-in-out,
-    width 0.3s ease-in-out;
+  transition: height 0.3s ease-in-out, padding 0.3s ease-in-out;
   &__heading {
     text-align: left;
     cursor: default;
@@ -91,6 +88,7 @@ body {
   }
   &__toggle {
     display: none;
+    filter: invert(1);
   }
   &--chosen {
     font-weight: 700;
@@ -98,7 +96,6 @@ body {
   &--visible {
     height: 25rem;
     padding: 3rem;
-    width: 40rem;
     box-shadow: 0 0.5rem 0.5rem $main-grey-light;
   }
 }
@@ -111,7 +108,8 @@ body {
   width: 90%;
   max-width: 100rem;
   margin: 8rem auto;
-  background-color: $main-blue;
+  border: 1px solid $main-grey-light;
+  box-shadow: 0 0 0.5rem 0.1rem $main-grey-light;
   padding: 3rem;
   border-radius: 10px;
   &__answers {
@@ -125,19 +123,26 @@ body {
     list-style-type: decimal;
     list-style-position: inside;
     width: 66%;
-    margin: 0.5rem 0;
+    margin: 2.5rem 0 0;
     cursor: pointer;
     padding: 0.5rem;
     border-radius: 10px;
     border: 1px solid $main-grey;
+    transition: 0.2s ease;
   }
   &__button {
     border: none;
-    background-color: #086abb;
+    margin: 2rem;
+    background-color: $main-dark-blue;
     color: $main-blue;
     padding: 1rem;
     border-radius: 5px;
     cursor: pointer;
+    transition: 0.2s ease;
+    box-shadow: 0 0 0.5rem 0.1rem $main-dark-blue;
+    &:hover {
+      opacity: 0.8;
+    }
   }
   &__res-q {
     font: {
@@ -186,8 +191,7 @@ footer {
     transform: unset;
     align-items: center;
     background: none;
-    color: white;
-    width: 90%;
+    flex-basis: 50%;
     &__heading {
       cursor: pointer;
     }
@@ -201,7 +205,7 @@ footer {
       overflow: hidden;
       position: fixed;
       top: 7rem;
-      background: $main-grey-light;
+      background: white;
       border-radius: 15px;
       transition: height 0.2s ease-in-out, padding 0.2s ease-in-out;
     }
@@ -214,9 +218,9 @@ footer {
     &__answers {
       grid-template: 1fr 1fr / 1fr 1fr;
     }
-  }
-  .answer:hover {
-    background-color: $main-grey;
-    color: $main-grey-light;
+    &__answer:hover {
+      background-color: $main-grey-light;
+      color: white;
+    }
   }
 }
