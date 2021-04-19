@@ -23,6 +23,7 @@ h4 {
 
 p,
 button,
+span,
 li {
   font-size: 1.6rem;
 }
@@ -36,7 +37,8 @@ body {
 .header {
   display: flex;
   padding: 2rem;
-  box-shadow: 0 0.5rem 0.5rem #ababab;
+  box-shadow: 0 0 0.5rem 0.1rem #ababab;
+  border-radius: none;
 }
 .header__toggle {
   margin-left: auto;
@@ -55,7 +57,6 @@ body {
   justify-content: space-around;
   height: 0;
   padding: 0;
-  border-radius: 15px;
   overflow: hidden;
   position: fixed;
   width: 100%;
@@ -90,11 +91,22 @@ body {
 .menu--visible {
   height: 25rem;
   padding: 3rem;
-  box-shadow: 0 0.5rem 0.5rem #ababab;
+  box-shadow: 0 0 0.5rem 0.1rem #ababab;
+  border-radius: 1rem;
 }
 
 .hidden {
   display: none;
+}
+
+.display {
+  margin: 4rem auto 0;
+  width: fit-content;
+  text-align: left;
+  border: 1px solid #ababab;
+  padding: 2rem;
+  box-shadow: 0 0 0.5rem 0.1rem #ababab;
+  border-radius: 1rem;
 }
 
 .quiz {
@@ -103,8 +115,8 @@ body {
   margin: 8rem auto;
   border: 1px solid #ababab;
   box-shadow: 0 0 0.5rem 0.1rem #ababab;
+  border-radius: 1rem;
   padding: 3rem;
-  border-radius: 10px;
 }
 .quiz__answers {
   width: 100%;
@@ -130,10 +142,10 @@ body {
   background-color: #086abb;
   color: aliceblue;
   padding: 1rem;
-  border-radius: 5px;
   cursor: pointer;
   transition: 0.2s ease;
   box-shadow: 0 0 0.5rem 0.1rem #086abb;
+  border-radius: 1rem;
 }
 .quiz__button:hover {
   opacity: 0.8;
@@ -196,12 +208,12 @@ footer a {
     position: fixed;
     top: 7rem;
     background: white;
-    border-radius: 15px;
     transition: height 0.2s ease-in-out, padding 0.2s ease-in-out;
   }
   .menu--active {
     padding: 1rem;
-    box-shadow: 0 0.5rem 0.5rem 0.1rem #ababab;
+    box-shadow: 0 0 0.5rem 0.1rem #ababab;
+    border-radius: 1rem;
   }
 
   .quiz__answers {

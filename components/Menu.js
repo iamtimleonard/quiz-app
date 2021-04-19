@@ -3,6 +3,8 @@ const menuHeadings = document.querySelectorAll(".menu__heading");
 const menu = document.querySelector(".menu");
 const categoriesMenu = document.querySelector(".categories");
 const difficultyMenu = document.querySelector(".difficulty");
+const categoryDisplay = document.querySelector(".display__category");
+const difficultyDisplay = document.querySelector(".display__difficulty");
 let categoryChoices;
 let difficultyChoices;
 
@@ -96,14 +98,24 @@ const setMenu = () => {
   document.getElementById(userChoices.difficulty).classList.add("menu--chosen");
 };
 
+const setDisplay = () => {
+  categoryDisplay.textContent = categories.find(
+    (category) => category.data === parseInt(userChoices.category)
+  ).title;
+  difficultyDisplay.textContent =
+    userChoices.difficulty[0].toUpperCase() + userChoices.difficulty.slice(1);
+};
+
 const setUserChoice = async (e, type) => {
   userChoices[type] = e.target.id;
   const { data } = await axios.get(
     `https://opentdb.com/api.php?amount=10&category=${userChoices.category}&difficulty=${userChoices.difficulty}&type=multiple&encode=base64`
   );
   initialize(data);
+  setDisplay();
   setMenu();
   reset();
+  menu.classList.remove("menu--visible");
   quizButton.textContent = "Start new quiz";
 };
 

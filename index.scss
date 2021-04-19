@@ -5,6 +5,11 @@ $correct: #00bb00;
 $incorrect: #bb0000;
 $main-dark-blue: #086abb;
 
+@mixin shadow-border($color: $main-grey-light, $border: 1rem) {
+  box-shadow: 0 0 0.5rem 0.1rem $color;
+  border-radius: $border;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -30,6 +35,7 @@ h4 {
 
 p,
 button,
+span,
 li {
   font-size: 1.6rem;
 }
@@ -43,7 +49,7 @@ body {
 .header {
   display: flex;
   padding: 2rem;
-  box-shadow: 0 0.5rem 0.5rem $main-grey-light;
+  @include shadow-border($main-grey-light, none);
   &__toggle {
     margin-left: auto;
     cursor: pointer;
@@ -62,7 +68,6 @@ body {
   justify-content: space-around;
   height: 0;
   padding: 0;
-  border-radius: 15px;
   overflow: hidden;
   position: fixed;
   width: 100%;
@@ -96,7 +101,7 @@ body {
   &--visible {
     height: 25rem;
     padding: 3rem;
-    box-shadow: 0 0.5rem 0.5rem $main-grey-light;
+    @include shadow-border();
   }
 }
 
@@ -104,14 +109,22 @@ body {
   display: none;
 }
 
+.display {
+  margin: 4rem auto 0;
+  width: fit-content;
+  text-align: left;
+  border: 1px solid $main-grey-light;
+  padding: 2rem;
+  @include shadow-border();
+}
+
 .quiz {
   width: 90%;
   max-width: 100rem;
   margin: 8rem auto;
   border: 1px solid $main-grey-light;
-  box-shadow: 0 0 0.5rem 0.1rem $main-grey-light;
+  @include shadow-border();
   padding: 3rem;
-  border-radius: 10px;
   &__answers {
     width: 100%;
     display: grid;
@@ -136,10 +149,9 @@ body {
     background-color: $main-dark-blue;
     color: $main-blue;
     padding: 1rem;
-    border-radius: 5px;
     cursor: pointer;
     transition: 0.2s ease;
-    box-shadow: 0 0 0.5rem 0.1rem $main-dark-blue;
+    @include shadow-border($main-dark-blue);
     &:hover {
       opacity: 0.8;
     }
@@ -206,12 +218,11 @@ footer {
       position: fixed;
       top: 7rem;
       background: white;
-      border-radius: 15px;
       transition: height 0.2s ease-in-out, padding 0.2s ease-in-out;
     }
     &--active {
       padding: 1rem;
-      box-shadow: 0 0.5rem 0.5rem 0.1rem $main-grey-light;
+      @include shadow-border();
     }
   }
   .quiz {
