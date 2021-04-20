@@ -121,7 +121,8 @@ body {
 .menu--visible {
   height: 25rem;
   padding: 3rem;
-  box-shadow: 0 0 0.5rem 0.1rem #ababab;
+  z-index: 2;
+  box-shadow: 0 0.5rem 0.5rem 0.1rem #ababab;
   border-radius: 1rem;
   background: white;
 }
@@ -176,7 +177,7 @@ body {
   padding: 1rem;
   cursor: pointer;
   transition: 0.2s ease;
-  box-shadow: 0 0 0.5rem 0.1rem #086abb;
+  box-shadow: 0 #086abb 0.5rem 0.1rem #ababab;
   border-radius: 1rem;
   background: white;
   background-color: #086abb;
@@ -250,7 +251,7 @@ footer a {
   }
   .menu--active {
     padding: 1rem;
-    box-shadow: 0 0 0.5rem 0.1rem #ababab;
+    box-shadow: 0 0.5rem 0.5rem 0.1rem #ababab;
     border-radius: 1rem;
     background: white;
   }

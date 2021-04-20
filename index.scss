@@ -6,11 +6,12 @@ $incorrect: #bb0000;
 $main-dark-blue: #086abb;
 
 @mixin shadow-border(
+  $y-offset: 0,
   $color: $main-grey-light,
   $border: 1rem,
   $bg-color: white
 ) {
-  box-shadow: 0 0 0.5rem 0.1rem $color;
+  box-shadow: 0 $y-offset 0.5rem 0.1rem $color;
   border-radius: $border;
   background: $bg-color;
 }
@@ -84,7 +85,7 @@ body {
 .header {
   display: flex;
   padding: 2rem;
-  @include shadow-border($main-grey-light, none);
+  @include shadow-border($color: $main-grey-light, $border: none);
   &__toggle {
     margin-left: auto;
     cursor: pointer;
@@ -136,7 +137,8 @@ body {
   &--visible {
     height: 25rem;
     padding: 3rem;
-    @include shadow-border();
+    z-index: 2;
+    @include shadow-border($y-offset: 0.5rem);
   }
 }
 
@@ -261,7 +263,7 @@ footer {
     }
     &--active {
       padding: 1rem;
-      @include shadow-border();
+      @include shadow-border($y-offset: 0.5rem);
     }
   }
   .quiz {
