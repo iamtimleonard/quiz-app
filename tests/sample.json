@@ -1,0 +1,89 @@
+{
+  "response_code": 0,
+  "results": [
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "In past times, what would a gentleman keep in his fob pocket?",
+      "correct_answer": "Watch",
+      "incorrect_answers": ["Money", "Keys", "Notebook"]
+    },
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "On a dartboard, what number is directly opposite No. 1?",
+      "correct_answer": "19",
+      "incorrect_answers": ["20", "12", "15"]
+    },
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which American president appears on a one dollar bill?",
+      "correct_answer": "George Washington",
+      "incorrect_answers": [
+        "Thomas Jefferson",
+        "Abraham Lincoln",
+        "Benjamin Franklin"
+      ]
+    },
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What is &quot;dabbing&quot;?",
+      "correct_answer": "A dance",
+      "incorrect_answers": ["A medical procedure", "A sport", "A language"]
+    },
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What is the name of Poland in Polish?",
+      "correct_answer": "Polska",
+      "incorrect_answers": ["Pupcia", "Polszka", "P&oacute;land"]
+    },
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What is the name of NASA&rsquo;s most famous space telescope?",
+      "correct_answer": "Hubble Space Telescope",
+      "incorrect_answers": ["Big Eye", "Death Star", "Millenium Falcon"]
+    },
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "The Canadian $1 coin is colloquially known as a what?",
+      "correct_answer": "Loonie",
+      "incorrect_answers": ["Boolie", "Foolie", "Moodie"]
+    },
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Who is the author of Jurrasic Park?",
+      "correct_answer": "Michael Crichton",
+      "incorrect_answers": ["Peter Benchley", "Chuck Paluhniuk", "Irvine Welsh"]
+    },
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What is the famous Papa John&#039;s last name?",
+      "correct_answer": "Schnatter",
+      "incorrect_answers": ["Chowder", "Williams", "ANDERSON"]
+    },
+    {
+      "category": "General Knowledge",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What kind of aircraft was developed by Igor Sikorsky in the United States in 1942?",
+      "correct_answer": "Helicopter",
+      "incorrect_answers": ["Stealth Blimp", "Jet", "Space Capsule"]
+    }
+  ]
+}

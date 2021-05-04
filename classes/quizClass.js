@@ -19,3 +19,5 @@ class Quiz {
     this.questions[this.currentQuestion - 1].userAnswer = userAnswer;
   };
 }
+
+module.exports = Quiz;
