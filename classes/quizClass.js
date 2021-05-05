@@ -1,3 +1,5 @@
+// const Question = require("./questionClass");
+
 class Quiz {
   constructor({ results }) {
     this.questions = results;

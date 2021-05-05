@@ -17,3 +17,9 @@ test("Question", () => {
     "In past times, what would a gentleman keep in his fob pocket?"
   );
 });
+
+const question = quiz.getNextQuestion();
+
+test("Quiz.getNextQuestion", () => {
+  expect(quiz.currentQuestion).toBe(1);
+});
